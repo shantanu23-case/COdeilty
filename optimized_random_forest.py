@@ -103,3 +103,12 @@ merged_df['final_risk_label'] = merged_df['predicted_high_risk'].map({True: "Hig
 # Save results
 merged_df[['pr_id', 'final_risk_label', 'high_risk_probability'] + features].to_csv("pr_predictions.csv", index=False)
 print("\n✅ Updated predictions saved to pr_predictions.csv")
+
+# Feature importance visualization
+plt.figure(figsize=(10, 6))
+plt.barh(importances['feature'], importances['importance'], color='skyblue')
+plt.xlabel('Importance')
+plt.title('Feature Importance - Random Forest Model')
+plt.tight_layout()
+plt.savefig("feature_importance_graph.png")
+plt.show()
